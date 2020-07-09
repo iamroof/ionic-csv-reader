@@ -1,0 +1,7 @@
+{
+  "name": "ionic-csv-reader",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

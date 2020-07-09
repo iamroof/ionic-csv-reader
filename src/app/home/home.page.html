@@ -1,0 +1,57 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      EIB
+    </ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button (click)="importFile()">
+        <ion-icon name="download"></ion-icon>
+      </ion-button>
+      
+      <ion-button (click)="presentSettingsModal()">
+        <ion-icon name="settings-sharp"></ion-icon>
+      </ion-button>
+
+      <ion-button (click)="presentSearchModal()" [ngClass]="{
+        'search-active':filter}" >
+        <ion-icon name="search"></ion-icon>
+      </ion-button>
+     
+
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <div style="width:100%;text-align:center; padding-top: 20px" *ngIf="loading">
+      Fetching Records ...
+  </div>
+
+  <div style="width:100%;text-align:center; padding-top: 20px" *ngIf="!loading && (empData.length==0)">
+      No Records Found
+  </div>
+
+  <ion-card *ngFor = "let emp of empData" (click)= "presentEmpModal(emp)">
+      <ion-grid>
+
+        <ng-container *ngFor="let col of visibleColumns; let last = last">
+              <ion-row [ngClass]="{
+                'br-row':!last,
+                'dt-row':true
+              }">
+                <ion-col size="5" class="lb-col">
+                    {{col | empProperty}}
+                </ion-col>
+                <ion-col size="7" class="dt-col">
+                  {{emp[col]}}
+              </ion-col>
+            </ion-row>
+        </ng-container>
+
+      </ion-grid>
+  </ion-card>
+
+</ion-content>

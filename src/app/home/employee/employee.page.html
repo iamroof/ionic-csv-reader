@@ -1,0 +1,42 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+
+    <ion-buttons slot="start">
+      <ion-button (click)="close()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    
+    </ion-buttons>
+
+    <ion-title>
+      Record
+    </ion-title>
+
+
+  </ion-toolbar>
+</ion-header>
+  
+  <ion-content>
+    <ion-grid>
+
+        <ng-container *ngFor="let col of activeColumns;let last = last">
+
+            <ion-row class="br-row dt-row">
+                  <ion-col size="5" class="lb-col">
+                        {{col | empProperty}}
+                  </ion-col>
+                  <ion-col size="7" class="dt-col">
+                        {{employee[col]}}
+                  </ion-col>
+            </ion-row>
+
+        </ng-container>
+
+    </ion-grid>
+   
+
+    </ion-content>
+
+
+    
+
